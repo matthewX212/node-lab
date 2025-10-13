@@ -32,10 +32,7 @@ app.get("/cadastro/{:nome}", function(req,res){
 })
 
 
-app.listen(process.env.PORT ?? 3000,function(erro){  // cria a aplicaÃ§Ã£o na porta 4000
-    if (erro){
-        console.log("Erro ao Iniciar.");
-    }else{
-        console.log("Servidor Iniciado.");
-    }
-})
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+console.log(`Servidor rodando na porta ${PORT}`);
+});
