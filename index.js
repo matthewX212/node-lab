@@ -9,37 +9,49 @@ app.get("/", function(req,res){
 
 //rota do cadastro de produtos
 app.get("/produtos", function(req,res){
-    res.send("<h1>Lista de Produtos!</h1>");
-})
+    const produtos = [
+        { id: 1, nome: "Teclado", preco: 120.00 },
+        { id: 2, nome: "Mouse", preco: 45.50 },
+        { id: 3, nome: "Monitor", preco: 799.90 }
+    ];
 
-//rota com parametro 
-app.get("/consulta/:parametro", function(req,res){
-    //req --> dados enviados pelo cliente
-    //res --> resposta enviada pelo servidor de volta ao cliente
-    res.send("retorno consulta:" + req.params.parametro);
-})
-
-
-//rota com parametro opcional
-app.get("/cadastro/{:nome}", function(req,res){
-    //req --> dados enviados pelo cliente
-    var nome = req.params.nome;
-    if (nome){
-        res.send("<h1>produto " + nome + " criado!</h1>");
-    }else{
-        res.send("produto criado!");
+    // suporte opcional para retornar JSON: /produtos?format=json
+    if (req.query.format === "json") {
+        return res.json(produtos);
     }
-    
+
+    let html = "<h1>Lista de Produtos</h1>";
+    html += "<ul>";
+    produtos.forEach(p => {
+        html += `<li>${p.id} - ${p.nome} — R$ ${p.preco.toFixed(2)}</li>`;
+    });
+    html += "</ul>";
+
+    res.send(html);
 })
 
+// rota simples de clientes
+app.get("/clientes", (req, res) => {
+    const clientes = [
+        { id: 1, nome: "Ana", email: "ana@example.com" },
+        { id: 2, nome: "Bruno", email: "bruno@example.com" },
+        { id: 3, nome: "Carla", email: "carla@example.com" }
+    ];
 
-//app.listen(process.env.PORT ?? 3000,function(erro){  // cria a aplicação na porta 4000
-//    if (erro){
-//        console.log("Erro ao Iniciar.");
-//    }else{
-//        console.log("Servidor Iniciado.");
-//    }
-//})
+    // suporte opcional para retornar JSON: /clientes?format=json
+    if (req.query.format === "json") {
+        return res.json(clientes);
+    }
+
+    let html = "<h1>Lista de Clientes</h1>";
+    html += "<ul>";
+    clientes.forEach(c => {
+        html += `<li>${c.id} - ${c.nome} — ${c.email}</li>`;
+    });
+    html += "</ul>";
+
+    res.send(html);
+});
 
 console.log ("PORT env: ", process.env.port);
 
