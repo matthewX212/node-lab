@@ -4,13 +4,13 @@ const PORT = process.env.PORT || 8080;
 
 //criando a rota inicial
 app.get("/", function(req,res){
-    res.send("<h1>Bem vindo ao meu site!</h1>");
+    res.send("<h1>Bem vindo ao meu site!</h1><h2>Aqui você encontra os melhores produtos!</h2>");
 })
 
 //rota do cadastro de produtos
 app.get("/produtos", function(req,res){
     const produtos = [
-        { id: 1, nome: "Teclado", preco: 120.00 },
+        { id: 1, nome: "Cadeira", preco: 150.00 },
         { id: 2, nome: "Mouse", preco: 45.50 },
         { id: 3, nome: "Monitor", preco: 799.90 }
     ];
@@ -33,7 +33,7 @@ app.get("/produtos", function(req,res){
 // rota simples de clientes
 app.get("/clientes", (req, res) => {
     const clientes = [
-        { id: 1, nome: "Ana", email: "ana@example.com" },
+        { id: 1, nome: "Carlos", email: "carlos@example.com" },
         { id: 2, nome: "Bruno", email: "bruno@example.com" },
         { id: 3, nome: "Carla", email: "carla@example.com" }
     ];
