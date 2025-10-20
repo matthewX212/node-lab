@@ -33,7 +33,7 @@ app.get("/produtos", function(req,res){
 // rota simples de clientes
 app.get("/clientes", (req, res) => {
     const clientes = [
-        { id: 1, nome: "Carlos", email: "carlos@example.com" },
+        { id: 1, nome: "Matheus", email: "matheus@example.com" },
         { id: 2, nome: "Bruno", email: "bruno@example.com" },
         { id: 3, nome: "Carla", email: "carla@example.com" }
     ];
