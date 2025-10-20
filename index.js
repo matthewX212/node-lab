@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 8080;
 
 //criando a rota inicial
 app.get("/", function(req,res){
-    res.send("<h1>Bem vindo ao meu site!</h1><h2>Aqui você encontra os melhores produtos!</h2>");
+    res.send("<h1>Bem vindo ao meu site!!!</h1><h2>Aqui você encontra os melhores produtos!</h2>");
 })
 
 //rota do cadastro de produtos
